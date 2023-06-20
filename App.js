@@ -5,6 +5,9 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Login from './src/pages/Login';
 import Home from './src/pages/Home';
+import Organicos from './src/pages/Organicos';
+import Importancia from './src/pages/Importancia';
+import Vantagens from './src/pages/Vantagens';
 import { Header } from 'react-native/Libraries/NewAppScreen';
 
 const stack = createNativeStackNavigator();
@@ -24,6 +27,27 @@ const StackNavigate = () => {
       options={{headerShown:false}}
     />
 
+    <stack.Screen
+    name='Organicos'
+    component={Organicos}
+    options={{title:''}}
+    />
+
+    <stack.Screen
+    name='Vantagens'
+    component={Vantagens}
+    options={{title:''}}
+    />
+
+<stack.Screen
+    name='Importancia'
+    component={Importancia}
+    options={{title:''}}
+    />
+
+    
+
+   
     </stack.Navigator>
   )
 }

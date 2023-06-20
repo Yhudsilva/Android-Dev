@@ -4,11 +4,35 @@ import {Text, StyleSheet, View, Alert, Image} from "react-native";
 import InputLogin from "../../components/Inputs/InputLogin";
 import Button from "../../components/Inputs/Button";
 
+const user = {
+  email: "admin@gmail.com",
+  senha: "12345"
+}
+
 
 
 function Login ({navigation}){
 
+  const [email, setEmail] = useState();
+  const [senha, setSenha] = useState();
 
+  const logar = () => {
+    
+    if(!email || !senha) {
+
+      Alert.alert(`O e-mail e senha devem ser preenchidos.`);
+
+     } else if (email !== user.email || senha !== user.senha) {
+
+      Alert.alert(`O e-mail ou senha estão incorretos.`);
+
+     } else {
+
+      navigation.navigate('Home')
+
+     }
+
+}
 
 return (
     <View style={style.boxLogin}>
@@ -21,16 +45,21 @@ return (
     <InputLogin 
       label="E-mail"
       placeHolder="exemplo@gmail.com"
-      comMascara={false}>
+      comMascara={false}
+      Valor = {email}
+      setValor= {setEmail}>
     </InputLogin>
     <InputLogin 
       label="Senha"
       placeHolder="1234"
-      comMascara={true}>
+      comMascara={true}
+      Valor = {senha}
+      setValor= {setSenha}>
     </InputLogin>
 
     <Button 
     value={"ENTRAR"}
+    acao={logar}
     ></Button>
   </View>
 )
