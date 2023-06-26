@@ -1,13 +1,11 @@
 import React, {useState} from "react";
-import {Text, StyleSheet, View, Alert, Image,} from "react-native";
-import { Header } from 'react-native/Libraries/NewAppScreen'
+import {Text, StyleSheet, View, Alert, Image, StatusBar} from "react-native";
+import Header from "../../components/header";
+import { AntDesign } from "@expo/vector-icons";
+
 
 import MainButton from "../../components/MainButton";
-
-const user = {
-  email: "admin@gmail.com",
-  senha: "12345"
-}
+import OtherButton from "../../components/Inputs/OtherButton";
 
 
 
@@ -25,18 +23,33 @@ function Home ({navigation}){
     navigation.navigate('Importancia')
   }
 
+  const rota4 = () => {
+    navigation.navigate('Configs')
+  }
 
+  const rota5 = () => {
+    navigation.navigate('Locais')
+  }
 
   return (
+
+  <View style={style.box}>
+
+<Header acao={rota4}></Header>
     <View style={style.box}>
+
+      <StatusBar barStyle={'light-content'} translucent={false}></StatusBar>
+
       <View style={style.container}>
         <MainButton value='Os Orgânicos' acao={rota1} ></MainButton>
         <MainButton value='Vantagens' acao={rota2}></MainButton>
-        <MainButton value='Qual sua importância' acao={rota3}></MainButton>
+        <MainButton value='Agricultura Sustentável' acao={rota3}></MainButton>
+        <OtherButton value={<AntDesign name="isv" size={24}  ><Text style={{fontSize:20,fontWeight:'bold'}}>  Orgânicos perto de você</Text></AntDesign>} acao={rota5}></OtherButton>
       </View>
     </View>
-)
-
+    </View>
+   
+  )
 }
 
 const style = StyleSheet.create({
@@ -56,7 +69,9 @@ const style = StyleSheet.create({
       borderColor:'#000000',
       borderWidth:2,
       justifyContent:'center'
-    }   
+    },
+   
 })
+
 
 export default Home; 
